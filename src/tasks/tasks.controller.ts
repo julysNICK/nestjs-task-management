@@ -13,10 +13,17 @@ import { TasksService } from './tasks.service';
 import { Task } from './dto/task.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskStatusDto } from './dto/update-task-status.dto';
+import { GetTasksFilterDto } from './dto/get-task-filter.dto';
 
 @Controller('tasks')
 export class TasksController {
   constructor(private tasksService: TasksService) {}
+
+  @Get('/')
+  getTasks(@Query() filterDto: GetTasksFilterDto): Promise<Task[]> {
+    return this.tasksService.getTasks(filterDto);
+  }
+
   // @Get('/')
   // getAllTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
   //   if (Object.keys(filterDto).length) {
