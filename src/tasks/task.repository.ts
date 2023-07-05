@@ -4,10 +4,6 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import { TaskStatus } from './dto/task-status.enum';
 import { GetTasksFilterDto } from './dto/get-task-filter.dto';
 
-// export class TaskRepository extends Repository<Task> {}
-
-//create repository for task entity
-
 export class TaskRepository extends Repository<Task> {
   async createTask(CreateTaskDto: CreateTaskDto): Promise<Task> {
     const { title, description } = CreateTaskDto;
